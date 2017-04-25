@@ -2,7 +2,8 @@
 
 set -ex
 
-TMP="autoconf \
+
+apk add --no-cache --virtual .build-deps autoconf \
 file \
 g++ \
 gcc \
@@ -19,10 +20,9 @@ binutils-libs \
 mpc1 \
 mpfr3 \
 gmp \
-libgomp"
+libgomp
 
 
-apk add $TMP
 
 pecl install xdebug
 docker-php-ext-enable xdebug
@@ -39,5 +39,5 @@ xdebug.idekey = "PHPSTORM"
 EOF
 
 
-apk del $TMP
+apk del .build-deps
 rm -rf /var/cache/apk/*

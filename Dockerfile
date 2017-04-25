@@ -11,7 +11,8 @@ WORKDIR /build-docker/
 
 
 ADD install-python2.sh ./
-RUN chmod +x install-python2.sh && ./install-python2.sh
+RUN chmod +x install-python2.sh
+RUN ./install-python2.sh
 
 ADD install-php-ext.sh ./
 RUN chmod +x install-php-ext.sh && ./install-php-ext.sh

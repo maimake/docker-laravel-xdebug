@@ -32,9 +32,8 @@ cat << 'EOF' >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 xdebug.remote_enable = 1
 xdebug.remote_connect_back = 0
-xdebug.remote_host = localhost
-xdebug.remote_port = 9000
 xdebug.idekey = "PHPSTORM"
+xdebug.remote_log = "/var/log/xdebug.log"
 
 EOF
 

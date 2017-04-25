@@ -1,7 +1,7 @@
 FROM hitalos/laravel
 MAINTAINER maizhongwen <yshxinjian@gmail.com>
 
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
+# RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 
 ADD install-python2.sh /build-docker/
 RUN chmod +x /build-docker/install-python2.sh

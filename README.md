@@ -8,7 +8,7 @@ This image it's for development. **Optimize to use in production!**
 In the latest update, I changed the base image to `php:alpine` for size optimizing.
 
 ## Tags
-* [**`latest`**:](https://github.com/hitalos/laravel/blob/master/Dockerfile)  
+* [**`latest`**:](https://github.com/hitalos/laravel/blob/master/Dockerfile)
  * `php` 7.1.3
    * `composer` 1.4.1
  * `nodejs` 7.9.0
@@ -47,6 +47,8 @@ web:
         - 80:80
     volumes:
         - ./:/var/www
+    environment:
+        - XDEBUG_CONFIG="idekey=PHPSTORM remote_host=10.200.10.1"
     # If you don't want to use default 'artisan serve' command, edit and uncomment the line below.
     # command: php -S 0.0.0.0:80 -t public public/index.php
 ```
@@ -72,6 +74,7 @@ web:
         DB_USERNAME: username
         DB_PASSWORD: p455w0rd
         DB_CONNECTION: [pgsql or mysql]
+        XDEBUG_CONFIG: "idekey=PHPSTORM remote_host=10.200.10.1"
 db:
     image: [postgres or mysql]
     environment:
@@ -85,3 +88,5 @@ db:
         POSTGRES_USER: username
         POSTGRES_PASSWORD: p455w0rd
 ```
+
+Be sure that you have create an alias of your loopback interface IP (lo0, 10.200.10.1). For Mac: `sudo ifconfig lo0 alias 10.200.10.1`

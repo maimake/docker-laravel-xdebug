@@ -30,7 +30,8 @@ RUN chmod +x run.sh
 
 
 WORKDIR /var/www
-EXPOSE ['9001', '80']
+EXPOSE 9001
+EXPOSE 80
 
 
 CMD ["/build-docker/run.sh"]

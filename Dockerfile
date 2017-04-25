@@ -1,11 +1,6 @@
 FROM hitalos/laravel
 MAINTAINER maizhongwen <yshxinjian@gmail.com>
 
-
-
-RUN apk update
-
-
 WORKDIR /build-docker/
 
 

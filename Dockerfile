@@ -12,3 +12,11 @@ RUN chmod +x /build-docker/*
 
 RUN /build-docker/install-python2.sh
 RUN /build-docker/install-php-ext.sh
+RUN /build-docker/install-dbgpproxy.sh
+
+RUN crontab -l | { cat; echo "* * * * * /usr/local/bin/php /var/www/artisan schedule:run >> /var/log/cron.log 2>&1"; } | crontab -
+
+
+CMD ["/build-docker/run.sh"]
+
+EXPOSE ['9001', '80']

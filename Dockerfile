@@ -6,17 +6,32 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 RUN apk update
 
 
-ADD *.sh /build-docker/
-RUN chmod +x /build-docker/*
+WORKDIR /build-docker/
 
 
-RUN /build-docker/install-python2.sh
-RUN /build-docker/install-php-ext.sh
-RUN /build-docker/install-dbgpproxy.sh
+
+ADD install-python2.sh ./
+RUN chmod +x install-python2.sh && ./install-python2.sh
+
+ADD install-php-ext.sh ./
+RUN chmod +x install-php-ext.sh && ./install-php-ext.sh
+
+
+ADD install-dbgpproxy.sh ./
+RUN chmod +x install-dbgpproxy.sh && ./install-dbgpproxy.sh
 
 RUN crontab -l | { cat; echo "* * * * * /usr/local/bin/php /var/www/artisan schedule:run >> /var/log/cron.log 2>&1"; } | crontab -
 
 
-CMD ["/build-docker/run.sh"]
 
+
+ADD run.sh ./
+RUN chmod +x run.sh
+
+
+
+WORKDIR /var/www
 EXPOSE ['9001', '80']
+
+
+CMD ["/build-docker/run.sh"]

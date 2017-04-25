@@ -1,22 +1,18 @@
 FROM hitalos/laravel
 MAINTAINER maizhongwen <yshxinjian@gmail.com>
 
-WORKDIR /build-docker/
+ADD install-python2.sh /build-docker/
+RUN chmod +x /build-docker/install-python2.sh
+RUN /build-docker/install-python2.sh
+
+ADD install-php-ext.sh /build-docker/
+RUN chmod +x /build-docker/install-php-ext.sh
+RUN /build-docker/install-php-ext.sh
 
 
-
-ADD install-python2.sh ./
-RUN chmod +x install-python2.sh
-RUN ./install-python2.sh
-
-ADD install-php-ext.sh ./
-RUN chmod +x install-php-ext.sh
-RUN ./install-php-ext.sh
-
-
-ADD install-dbgpproxy.sh ./
-RUN chmod +x install-dbgpproxy.sh
-RUN ./install-dbgpproxy.sh
+ADD install-dbgpproxy.sh /build-docker/
+RUN chmod +x /build-docker/install-dbgpproxy.sh
+RUN /build-docker/install-dbgpproxy.sh
 
 
 RUN crontab -l | { cat; echo "* * * * * /usr/local/bin/php /var/www/artisan schedule:run >> /var/log/cron.log 2>&1"; } | crontab -
@@ -24,8 +20,8 @@ RUN crontab -l | { cat; echo "* * * * * /usr/local/bin/php /var/www/artisan sche
 
 
 
-ADD run.sh ./
-RUN chmod +x run.sh
+ADD run.sh /build-docker/
+RUN chmod +x /build-docker/run.sh
 
 
 

@@ -15,11 +15,14 @@ RUN chmod +x install-python2.sh
 RUN ./install-python2.sh
 
 ADD install-php-ext.sh ./
-RUN chmod +x install-php-ext.sh && ./install-php-ext.sh
+RUN chmod +x install-php-ext.sh
+RUN ./install-php-ext.sh
 
 
 ADD install-dbgpproxy.sh ./
-RUN chmod +x install-dbgpproxy.sh && ./install-dbgpproxy.sh
+RUN chmod +x install-dbgpproxy.sh
+RUN ./install-dbgpproxy.sh
+
 
 RUN crontab -l | { cat; echo "* * * * * /usr/local/bin/php /var/www/artisan schedule:run >> /var/log/cron.log 2>&1"; } | crontab -
 

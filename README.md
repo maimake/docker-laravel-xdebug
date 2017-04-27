@@ -59,7 +59,7 @@ web:
     volumes:
         - ./:/var/www
     environment:
-        - XDEBUG_CONFIG="idekey=PHPSTORM remote_host=10.200.10.1"
+        - XDEBUG_CONFIG="idekey=PHPSTORM remote_host=10.200.10.1 remote_log=/var/log/xdebug.log"
     # If you don't want to use default 'artisan serve' command, edit and uncomment the line below.
     # command: php -S 0.0.0.0:80 -t public public/index.php
 ```
@@ -102,6 +102,6 @@ db:
 
 
 
-
+You have saw that , the env variable `XDEBUG_CONFIG`  can set any thing which listed by `php -i | grep xdebug`
 
 

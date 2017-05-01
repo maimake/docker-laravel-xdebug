@@ -3,6 +3,18 @@
 This project is base from [hitalos/laravel](https://hub.docker.com/r/hitalos/laravel/), thanks !
 
 
+#Laravel
+
+
+* php
+    * composer
+* nodejs
+    * npm
+    * yarn
+* supervisor
+* nginx
+
+
 
 # laravel
 

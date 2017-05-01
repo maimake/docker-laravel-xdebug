@@ -26,17 +26,15 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 
 
 
-ADD install-nginx.sh /build-docker/
-RUN sh /build-docker/install-nginx.sh
-
-
-ADD install-php.sh /build-docker/
-RUN sh /build-docker/install-php.sh
-
-
 ADD install-node.sh /build-docker/
 RUN sh /build-docker/install-node.sh
 
+ADD install-php-ext.sh /build-docker/
+RUN sh /build-docker/install-php-ext.sh
+
+
+ADD install-nginx.sh /build-docker/
+RUN sh /build-docker/install-nginx.sh
 
 ADD install-supervisor.sh /build-docker/
 RUN sh /build-docker/install-supervisor.sh

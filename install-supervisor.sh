@@ -4,9 +4,8 @@
 set -ex
 
 
-apk --no-cache add openssl python
+apk --no-cache add openssl python curl
 
-wget https://bootstrap.pypa.io/ez_setup.py -O - | python
-easy_install pip
+curl https://bootstrap.pypa.io/get-pip.py | python
 
 pip install supervisor

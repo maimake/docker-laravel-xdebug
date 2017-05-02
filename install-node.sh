@@ -4,7 +4,7 @@ set -ex
 
 export NPM_CONFIG_LOGLEVEL=info
 
-NODE_VERSION=7.9.0
+export NODE_VERSION=7.9.0
 
 addgroup -g 1000 node \
     && adduser -u 1000 -G node -s /bin/sh -D node \
@@ -48,7 +48,7 @@ addgroup -g 1000 node \
     && rm -Rf "node-v$NODE_VERSION" \
     && rm "node-v$NODE_VERSION.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt
 
-YARN_VERSION=0.23.2
+export YARN_VERSION=0.23.2
 
 apk add --no-cache --virtual .build-deps-yarn curl gnupg \
   && for key in \
